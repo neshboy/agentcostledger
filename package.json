@@ -1,0 +1,28 @@
+{
+  "name": "agentcostledger",
+  "version": "0.1.0",
+  "description": "Parses real local AI coding-agent usage logs (starting with Claude Code session JSONL files) into a local dashboard of estimated spend by day, project, and model.",
+  "license": "MIT",
+  "private": true,
+  "bin": {
+    "agentcostledger": "bin/agentcostledger.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "scan": "node dist/cli/index.js scan",
+    "report": "node dist/cli/index.js report"
+  },
+  "dependencies": {
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.9"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

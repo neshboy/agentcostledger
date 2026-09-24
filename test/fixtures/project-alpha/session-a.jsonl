@@ -1,0 +1,6 @@
+{"type":"user","sessionId":"sess-a","timestamp":"2026-09-10T10:00:00.000Z","cwd":"C:\\Users\\demo\\projects\\alpha","message":{"role":"user","content":"Hello, please summarize this file."}}
+{"type":"attachment","sessionId":"sess-a","timestamp":"2026-09-10T10:00:01.000Z"}
+{"type":"assistant","sessionId":"sess-a","timestamp":"2026-09-10T10:00:05.000Z","cwd":"C:\\Users\\demo\\projects\\alpha","message":{"role":"assistant","model":"claude-sonnet-5","content":[{"type":"text","text":"Sure, here's a summary."}],"usage":{"input_tokens":1000,"cache_creation_input_tokens":2000,"cache_read_input_tokens":3000,"output_tokens":500,"cache_creation":{"ephemeral_5m_input_tokens":2000,"ephemeral_1h_input_tokens":0}}}}
+{"type":"user","sessionId":"sess-a","timestamp":"2026-09-10T10:01:00.000Z","cwd":"C:\\Users\\demo\\projects\\alpha","message":{"role":"user","content":"Thanks, one more thing."}}
+{"type":"assistant","sessionId":"sess-a","timestamp":"2026-09-10T10:01:05.000Z","cwd":"C:\\Users\\demo\\projects\\alpha","message":{"role":"assistant","model":"claude-sonnet-5","content":[{"type":"text","text":"Sure thing."}],"usage":{"input_tokens":500,"cache_read_input_tokens":1000,"output_tokens":200}}}
+{not valid json
