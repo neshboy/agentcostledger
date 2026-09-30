@@ -164,7 +164,7 @@ export const claudeCodeParser: TranscriptParser = {
       let outputTokens = 0;
       let estimated = false;
 
-      if (isRecord(usage) && (typeof usage.input_tokens === "number" || typeof usage.output_tokens === "number")) {
+      if (isRecord(usage) && typeof usage.input_tokens === "number" && typeof usage.output_tokens === "number") {
         inputTokens = asNumber(usage.input_tokens);
         outputTokens = asNumber(usage.output_tokens);
         cacheReadTokens = asNumber(usage.cache_read_input_tokens);

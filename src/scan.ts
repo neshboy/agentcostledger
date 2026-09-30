@@ -79,7 +79,12 @@ export function scanFiles(files: DiscoveredFile[]): ScanStats {
       continue;
     }
 
-    const sampleLines = content.split("\n").slice(0, 20).filter(Boolean);
+    // Only sniff against a small leading slice of the file's text, not the
+    // whole thing - session logs can grow to multiple MB and the real parse
+    // below already re-splits the full content, so splitting it all twice
+    // just to grab 20 lines is wasted work on large files.
+    const sniffChunk = content.slice(0, 8192);
+    const sampleLines = sniffChunk.split("\n").slice(0, 20).filter(Boolean);
     const parser = PARSERS.find((p) => p.sniff(sampleLines));
     if (!parser) {
       filesUnrecognized++;
