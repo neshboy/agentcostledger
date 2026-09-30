@@ -98,7 +98,10 @@ export interface PricingLookupResult {
  * Look up pricing for a model id. Tries an exact match first, then strips a
  * trailing dated snapshot suffix (e.g. "claude-opus-4-5-20251101" ->
  * "claude-opus-4-5") since logs sometimes record the dated form, then a
- * prefix match against known families. Falls back to a labeled placeholder
+ * prefix match where the model id is a longer/dated variant of a known
+ * family key (never the reverse, which would let an unknown short id
+ * silently borrow an unrelated same-family model's price). Falls back to a
+ * labeled placeholder
  * rate rather than throwing, so an unrecognized/future model never breaks a
  * scan - it just gets flagged as using an unmatched default.
  */
@@ -113,7 +116,7 @@ export function getModelPricing(modelId: string): PricingLookupResult {
   }
 
   const prefixMatch = Object.keys(PRICING_TABLE)
-    .filter((key) => modelId.startsWith(key) || key.startsWith(modelId))
+    .filter((key) => modelId.startsWith(key))
     .sort((a, b) => b.length - a.length)[0];
   if (prefixMatch) {
     return { pricing: PRICING_TABLE[prefixMatch], matched: true };
